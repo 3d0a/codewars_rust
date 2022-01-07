@@ -1,5 +1,5 @@
 fn main() {
-    let result = bouncing_ball(3.0, 0.66, 1.5);
+    let result = bouncing_ball(10.0, 0.6, 10.0);
     println!("{}", result);
 }
 
@@ -12,7 +12,7 @@ fn bouncing_ball(h: f64,  bounce: f64,  window: f64) -> i32 {
             println!(" Float parameter 'h' in meters must be greater than 0");
             break;
         }
-        else if window > h {
+        else if window >= h {
             println!("Float parameter 'window' must be less than h");
             break;
         }
