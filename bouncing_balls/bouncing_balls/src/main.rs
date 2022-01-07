@@ -16,7 +16,7 @@ fn bouncing_ball(h: f64,  bounce: f64,  window: f64) -> i32 {
             println!("Float parameter 'window' must be less than h");
             break;
         }
-        else if bounce > 1.0 || bounce < 0.0 {
+        else if bounce >= 1.0 || bounce < 0.0 {
             println!(" Float parameter 'bounce' must be greater than 0 and less than 1");
             break;
         }
