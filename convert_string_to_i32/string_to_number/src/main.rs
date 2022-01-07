@@ -9,7 +9,7 @@ fn main() {
 fn string_to_number(s: &str) -> i32 {
     let mut char_in_int32  = 0;
     let mut degree         = s.len() - 1;
-    let mut sign       = 1;
+    let mut sign           = 1;
     println!("{}", degree);
     for character in s.chars() {
         if character == '-' {
