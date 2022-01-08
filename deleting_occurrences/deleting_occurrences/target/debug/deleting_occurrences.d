@@ -1,0 +1,1 @@
+/home/edoa/Documents/codewars/rust/deleting_occurrences/deleting_occurrences/target/debug/deleting_occurrences: /home/edoa/Documents/codewars/rust/deleting_occurrences/deleting_occurrences/src/main.rs
