@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 fn main() { 
     let mut b = vec!["BBAR 150", "CDXE 515", "BKWR 250", "BTSQ 890", "DRTY 600"];
-    let mut c = vec!["A", "B", "C", "D", "E"];
+    let mut c = vec![];
     let size = c.len();
     let hell = "hello world";
     println!("{}", stock_list(b,c));
@@ -12,7 +12,11 @@ fn main() {
 fn stock_list(list_art: Vec<&str>, list_cat: Vec<&str>) -> String {
     let mut stock_list_hashmap :HashMap<char, u32> = HashMap::new(); 
     let mut stock_list_string                      = String::new();
-    let length_of_list_cat :u32 = list_cat.len() as u32 - 1;
+    let length_of_list_cat :i32 = list_cat.len() as i32 - 1;
+    let length_of_list_art :i32 = list_art.len() as i32;
+    if length_of_list_art == 0 || length_of_list_cat <= 0{
+        return String::new();
+    }
     for element in list_art {
         let element_as_vec         :Vec<&str> = element.split_whitespace().collect();
         let mut first_elem         :char      = element_as_vec[0].chars().next().unwrap();
