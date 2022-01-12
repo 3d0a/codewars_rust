@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-fn main() {
+fn main() { 
     let mut b = vec!["BBAR 150", "CDXE 515", "BKWR 250", "BTSQ 890", "DRTY 600"];
     let mut c = vec!["A", "B", "C", "D", "E"];
     let hell = "hello world";
