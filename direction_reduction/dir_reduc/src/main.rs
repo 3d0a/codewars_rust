@@ -23,7 +23,7 @@ fn dir_reduc(arr: &[Direction]) -> Vec<Direction> {
     }
     let mut _i = 0;
     loop {
-        if _i == reduced_array.len()  {
+        if _i == reduced_array.len()  || _i == reduced_array.len() - 1 {
             break;
         } 
         if direction_weights[&reduced_array[_i]] + direction_weights[&reduced_array[_i+1]] == 0 {
