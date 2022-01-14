@@ -1,6 +1,7 @@
+use std::fmt;
 fn main() {
     let arr = &[Direction::North, Direction::North, Direction::North, Direction::South, Direction::West];
-    dir_reduc(arr);
+    println!("{:?}", dir_reduc(arr));
 }
 
 enum Direction {
@@ -10,6 +11,16 @@ enum Direction {
     South,
 }
 
+impl fmt::Debug for Direction {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match *self {
+            Direction::North => write!(f, "North"),
+            Direction::East  => write!(f,  "East"),
+            Direction::West  => write!(f,  "West"),
+            Direction::South => write!(f, "South"),
+        }
+    }
+}
 struct Coordinats {
     x :i32,
     y :i32,
