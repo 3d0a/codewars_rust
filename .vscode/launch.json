@@ -9,7 +9,7 @@
             "type": "lldb",
             "request": "launch",
             "name": "Debug",
-            "program": "${workspaceFolder}/direction_reduction/dir_reduc/target/debug/dir_reduc",
+            "program": "${workspaceFolder}/pile_of_cubes/pile_of_cubes/target/debug/pile_of_cubes",
             "args": [],
             "cwd": "${workspaceFolder}"
         }
