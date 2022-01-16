@@ -8,7 +8,7 @@ fn find_nb(m: u64) -> i32 {
     loop {
         match current_count.checked_mul(current_count.pow(2)) {
             Some(_v) => {
-                volume = volume + current_count.pow(3) as u64;
+                volume = volume + current_count.pow(3);
             }
             None => {
                 return current_count as i32;
