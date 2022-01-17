@@ -1,5 +1,5 @@
 fn main() {
-    println!("{:?}", step(2, 100,110));
+    println!("{:?}", step(8, 30000,100000));
 }
 fn step(g: i32, m: u64, n: u64) -> Option<(u64, u64)> {
     let vec_of_primes :Vec<u64> = (m..=n).into_iter().filter(|x| is_prime(*x) ).collect::<Vec<u64>>();
@@ -8,6 +8,7 @@ fn step(g: i32, m: u64, n: u64) -> Option<(u64, u64)> {
         if (vec_of_primes[_i+1] - vec_of_primes[_i]) as i32 == g {
             return Some((vec_of_primes[_i], vec_of_primes[_i+1]));
         } 
+        _i +=1;
     }
     return None;
 }
