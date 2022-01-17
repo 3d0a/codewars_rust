@@ -9,7 +9,7 @@
             "type": "lldb",
             "request": "launch",
             "name": "Debug",
-            "program": "${workspaceFolder}/pile_of_cubes/pile_of_cubes/target/debug/pile_of_cubes",
+            "program": "${workspaceFolder}/squared_devisors/squared_devisors/target/debug/squared_devisors",
             "args": [],
             "cwd": "${workspaceFolder}"
         }
