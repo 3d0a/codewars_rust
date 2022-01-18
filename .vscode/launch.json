@@ -9,7 +9,7 @@
             "type": "lldb",
             "request": "launch",
             "name": "Debug",
-            "program": "${workspaceFolder}/6kyu/steps_in_prime/steps_in_prime/target/debug/steps_in_prime",
+            "program": "${workspaceFolder}/6kyu/PI approximation /pi_approximation/target/debug/pi_approximation",
             "args": [],
             "cwd": "${workspaceFolder}"
         }
