@@ -5,7 +5,7 @@ fn step(g: i32, m: u64, n: u64) -> Option<(u64, u64)> {
     let vec_of_primes :Vec<u64> = (m..=n).into_iter().filter(|x| is_prime(*x) ).collect::<Vec<u64>>();
     let mut _i = 0;
     while _i < vec_of_primes.len() - 1 {
-        if (vec_of_primes[_i+1] - vec_of_primes[_i]) as i32 == g {
+        if vec_of_primes.contains(&((g + vec_of_primes[_i] as i32)as u64)) {
             return Some((vec_of_primes[_i], vec_of_primes[_i+1]));
         } 
         _i +=1;

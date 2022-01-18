@@ -9,7 +9,7 @@
             "type": "lldb",
             "request": "launch",
             "name": "Debug",
-            "program": "${workspaceFolder}/squared_devisors/squared_devisors/target/debug/squared_devisors",
+            "program": "${workspaceFolder}/6kyu/steps_in_prime/steps_in_prime/target/debug/steps_in_prime",
             "args": [],
             "cwd": "${workspaceFolder}"
         }
