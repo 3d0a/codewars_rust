@@ -18,12 +18,12 @@ fn mix(s1: &str, s2: &str) -> String {
     return return_string;
   }
 
-  fn vec_of_lowercase(string_to_convert :&str, alphabet :&Vec<char>) -> Vec<String> {
-      return string_to_convert.chars()
-          .filter(|x| alphabet.contains(x))
-          .map(|x| x.to_string())
-          .collect::<Vec<String>>();
-  }
+fn vec_of_lowercase(string_to_convert :&str, alphabet :&Vec<char>) -> Vec<String> {
+    return string_to_convert.chars()
+        .filter(|x| alphabet.contains(x))
+        .map(|x| x.to_string())
+        .collect::<Vec<String>>();
+}
 
 fn char_counter(strings_vec :&Vec<String>) -> HashMap<&String, u64> {
     let mut counts_map :HashMap<&String, u64> = HashMap::from([(&strings_vec[0], 0)]);
