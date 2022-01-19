@@ -10,7 +10,7 @@ fn iter_pi(epsilon: f64) -> (i32, f64) {
     let mut pi_approximation :f64 = 0.;
     loop {
         pi_approximation = pi_approximation + 2./((4.*iteration_number + 1.) * (4.*iteration_number + 3.));
-        if (rnd10(4.*pi_approximation) - rnd10(PI)).abs() < epsilon {
+        if (4.*pi_approximation - PI).abs() < epsilon {
             return (iteration_number  as i32, rnd10(4.*pi_approximation));
         }
         else {
