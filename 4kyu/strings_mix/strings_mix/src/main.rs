@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 fn main() {
     println!("Hello, world!");
     let s1 = "my&friend&Paul has heavy hats! &";
@@ -12,7 +13,7 @@ fn mix(s1: &str, s2: &str) -> String {
         .collect::<Vec<_>>(); 
     let mut first_string_vec  :Vec<String> = vec_of_lowercase(s1, &alphabet);
     let mut second_string_vec :Vec<String> = vec_of_lowercase(s2, &alphabet);
-    println!("{:?}", (first_string_vec,second_string_vec));
+    println!("{:?}, {:?}", char_counter(&first_string_vec),char_counter(&second_string_vec));
 
     return return_string;
   }
@@ -24,4 +25,19 @@ fn mix(s1: &str, s2: &str) -> String {
           .collect::<Vec<String>>();
   }
 
-  
+fn char_counter(strings_vec :&Vec<String>) -> HashMap<&String, u64> {
+    let mut counts_map :HashMap<&String, u64> = HashMap::from([(&strings_vec[0], 0)]);
+    for character in strings_vec {
+        match counts_map.get_mut(character) {
+            Some(value) => {
+                *value +=1;
+            }
+            None => {
+                counts_map.insert(character, 1);
+            }
+        }
+    }
+    return counts_map;
+}
+
+
