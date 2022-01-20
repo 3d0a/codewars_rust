@@ -34,6 +34,7 @@ fn mix(s1: &str, s2: &str) -> String {
             }
         }
     }
+    vec_of_tuppls.sort_by(|a, b| a.0.cmp(&b.0));
     vec_of_tuppls.sort_by(|a, b| b.1.cmp(&a.1));
     println!("{:?}", vec_of_tuppls);
     let mut i = 0;
