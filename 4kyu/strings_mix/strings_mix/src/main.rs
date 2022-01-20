@@ -38,6 +38,9 @@ fn mix(s1: &str, s2: &str) -> String {
     println!("{:?}", vec_of_tuppls);
     let mut i = 0;
     for (character, number, arr_num) in &vec_of_tuppls {
+        if number == &1 {
+            continue;
+        }
         if arr_num == &0 {
             return_string.push_str("=");
         }
