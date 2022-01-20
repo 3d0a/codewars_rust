@@ -26,7 +26,7 @@ fn mix(s1: &str, s2: &str) -> String {
                     vec_of_tuppls.push((element.0, element.1, 1));
                 }
                 else {
-                    vec_of_tuppls.push((element.0, element.1, 0));
+                    vec_of_tuppls.push((element.0, element.1, 3));
                 }
             }
             None => {
@@ -35,15 +35,15 @@ fn mix(s1: &str, s2: &str) -> String {
         }
     }
     vec_of_tuppls.sort_by(|a, b| a.0.cmp(&b.0));
+    vec_of_tuppls.sort_by(|a, b| a.2.cmp(&b.2));
     vec_of_tuppls.sort_by(|a, b| b.1.cmp(&a.1));
-    vec_of_tuppls.sort_by(|a, b| b.2.cmp(&a.2));
     println!("{:?}", vec_of_tuppls);
     let mut i = 0;
     for (character, number, arr_num) in &vec_of_tuppls {
         if number == &1 {
             continue;
         }
-        if arr_num == &0 {
+        if arr_num == &3 {
             return_string.push_str("=");
         }
         else {
