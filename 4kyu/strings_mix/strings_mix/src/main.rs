@@ -1,19 +1,58 @@
 use std::collections::HashMap;
 fn main() {
-    println!("Hello, world!");
     let s1 = "my&friend&Paul has heavy hats! &";
     let s2 = "my friend John has many many friends &";
-    mix(s1, s2);
+    println!("{}", mix(s1, s2));
 }
 fn mix(s1: &str, s2: &str) -> String {
-    let return_string :String = String::new();
+    let mut return_string :String = String::new();
     let alphabet = (b'a'..=b'z')
         .map(|c| c as char)
         .filter(|c| c.is_alphabetic())
         .collect::<Vec<_>>(); 
-    let mut first_string_vec  :Vec<String> = vec_of_lowercase(s1, &alphabet);
-    let mut second_string_vec :Vec<String> = vec_of_lowercase(s2, &alphabet);
-    println!("{:?}, {:?}", char_counter(&first_string_vec),char_counter(&second_string_vec));
+    let mut first_string_vec   :Vec<String>                 = vec_of_lowercase(s1, &alphabet);
+    let mut second_string_vec  :Vec<String>                 = vec_of_lowercase(s2, &alphabet);
+    let first_string_map       :HashMap<&String, u64>       = char_counter(&first_string_vec);
+    let second_string_map      :HashMap<&String, u64>       = char_counter(&second_string_vec);
+    let mut vec_of_tuppls      :Vec<(&String, u64, u64)>    = vec![];
+    println!("{:?}, {:?}", first_string_map, second_string_map);
+    for element in first_string_map {
+        match second_string_map.get(element.0) {
+            Some(second_str_count) => {
+                if second_str_count > &element.1 {
+                    vec_of_tuppls.push((element.0, *second_str_count, 2)); 
+                }
+                else if second_str_count < &element.1 {
+                    vec_of_tuppls.push((element.0, element.1, 1));
+                }
+                else {
+                    vec_of_tuppls.push((element.0, element.1, 0));
+                }
+            }
+            None => {
+                continue;
+            }
+        }
+    }
+    vec_of_tuppls.sort_by(|a, b| b.1.cmp(&a.1));
+    println!("{:?}", vec_of_tuppls);
+    let mut i = 0;
+    for (character, number, arr_num) in &vec_of_tuppls {
+        if arr_num == &0 {
+            return_string.push_str("=");
+        }
+        else {
+            return_string.push_str(&arr_num.to_string().to_owned());
+        }
+        return_string.push_str(":");
+        return_string.push_str(&character.repeat(*number as usize).to_owned());
+        if i == vec_of_tuppls.len() - 1 {
+            break;
+        }
+        return_string.push_str("/");
+        i += &1;
+    }
+    
 
     return return_string;
   }
