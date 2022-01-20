@@ -57,8 +57,6 @@ fn mix(s1: &str, s2: &str) -> String {
         }
         return_string.push_str("/");
     }
-    
-
     return return_string;
   }
 
