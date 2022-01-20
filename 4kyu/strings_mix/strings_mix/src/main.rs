@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 fn main() {
-    let s1 = "my&friend&Paul has heavy hats! &";
-    let s2 = "my friend John has many many friends &";
+    let s1 = "Are they here";
+    let s2 = "yes, they are here";
     println!("{}", mix(s1, s2));
 }
 fn mix(s1: &str, s2: &str) -> String {
@@ -36,6 +36,7 @@ fn mix(s1: &str, s2: &str) -> String {
     }
     vec_of_tuppls.sort_by(|a, b| a.0.cmp(&b.0));
     vec_of_tuppls.sort_by(|a, b| b.1.cmp(&a.1));
+    vec_of_tuppls.sort_by(|a, b| b.2.cmp(&a.2));
     println!("{:?}", vec_of_tuppls);
     let mut i = 0;
     for (character, number, arr_num) in &vec_of_tuppls {
@@ -50,11 +51,11 @@ fn mix(s1: &str, s2: &str) -> String {
         }
         return_string.push_str(":");
         return_string.push_str(&character.repeat(*number as usize).to_owned());
+        i += &1;
         if i == vec_of_tuppls.len() - 1 {
             break;
         }
         return_string.push_str("/");
-        i += &1;
     }
     
 
