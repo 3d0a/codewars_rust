@@ -6,15 +6,39 @@ fn main() {
     mix(s1, s2);
 }
 fn mix(s1: &str, s2: &str) -> String {
-    let return_string :String = String::new();
+    let mut return_string :String = String::new();
     let alphabet = (b'a'..=b'z')
         .map(|c| c as char)
         .filter(|c| c.is_alphabetic())
         .collect::<Vec<_>>(); 
-    let mut first_string_vec  :Vec<String> = vec_of_lowercase(s1, &alphabet);
-    let mut second_string_vec :Vec<String> = vec_of_lowercase(s2, &alphabet);
-    println!("{:?}, {:?}", char_counter(&first_string_vec),char_counter(&second_string_vec));
+    let mut first_string_vec  :Vec<String>            = vec_of_lowercase(s1, &alphabet);
+    let mut second_string_vec :Vec<String>            = vec_of_lowercase(s2, &alphabet);
+    let first_str_map         :HashMap<&String, u64>  = char_counter(&first_string_vec);
+    let second_str_map        :HashMap<&String, u64>  = char_counter(&second_string_vec);
+    let mut arr_of_tupples    :Vec<(&String, u64)>    = vec![];
 
+    println!("{:?}, {:?}", first_str_map, second_str_map);
+    
+    for character in first_str_map {
+        match second_str_map.get(&character.0) {
+            Some(count) => {
+                if count > &character.1 {
+                    arr_of_tupples.push((&character.0, *count));
+                }
+                else if count < &character.1 {
+                    arr_of_tupples.push((&character.0, character.1));
+                }
+                else {
+                    arr_of_tupples.push((&character.0, 0));
+                }
+            }
+            None => {
+                continue;
+            }
+        }
+    }
+    arr_of_tupples.sort_by(|a, b| b.1.cmp(&a.1));
+    println!("{:?}", arr_of_tupples);
     return return_string;
   }
 
