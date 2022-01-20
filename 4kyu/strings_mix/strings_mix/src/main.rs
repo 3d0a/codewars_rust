@@ -38,7 +38,6 @@ fn mix(s1: &str, s2: &str) -> String {
     vec_of_tuppls.sort_by(|a, b| a.2.cmp(&b.2));
     vec_of_tuppls.sort_by(|a, b| b.1.cmp(&a.1));
     println!("{:?}", vec_of_tuppls);
-    let mut i = 0;
     for (character, number, arr_num) in &vec_of_tuppls {
         if number == &1 {
             continue;
@@ -51,11 +50,13 @@ fn mix(s1: &str, s2: &str) -> String {
         }
         return_string.push_str(":");
         return_string.push_str(&character.repeat(*number as usize).to_owned());
-        i += &1;
-        if i == vec_of_tuppls.len() - 1 {
+        if vec_of_tuppls.last().copied() == *character {
+            println!("{}",character);
             break;
         }
-        return_string.push_str("/");
+        else {
+            return_string.push_str("/");
+        }
     }
     return return_string;
   }
