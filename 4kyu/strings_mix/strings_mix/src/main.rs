@@ -10,11 +10,11 @@ fn mix(s1: &str, s2: &str) -> String {
         .map(|c| c as char)
         .filter(|c| c.is_alphabetic())
         .collect::<Vec<_>>(); 
-    let mut first_string_vec   :Vec<String>                 = vec_of_lowercase(s1, &alphabet);
-    let mut second_string_vec  :Vec<String>                 = vec_of_lowercase(s2, &alphabet);
-    let first_string_map       :HashMap<&String, u64>       = char_counter(&first_string_vec);
-    let second_string_map      :HashMap<&String, u64>       = char_counter(&second_string_vec);
-    let mut vec_of_tuppls      :Vec<(&String, u64, u64)>    = vec![];
+    let mut first_string_vec   :Vec<String>                  = vec_of_lowercase(s1, &alphabet);
+    let mut second_string_vec  :Vec<String>                  = vec_of_lowercase(s2, &alphabet);
+    let first_string_map       :HashMap<&String, u64>        = char_counter(&first_string_vec);
+    let second_string_map      :HashMap<&String, u64>        = char_counter(&second_string_vec);
+    let mut vec_of_tuppls      :Vec<(&String, u64, u64)>     = vec![];
     println!("{:?}, {:?}", first_string_map, second_string_map);
     for element in first_string_map {
         match second_string_map.get(element.0) {
@@ -37,11 +37,12 @@ fn mix(s1: &str, s2: &str) -> String {
     vec_of_tuppls.sort_by(|a, b| a.0.cmp(&b.0));
     vec_of_tuppls.sort_by(|a, b| a.2.cmp(&b.2));
     vec_of_tuppls.sort_by(|a, b| b.1.cmp(&a.1));
+    vec_of_tuppls  = vec_of_tuppls.into_iter()
+        .filter(|x| x.1 != 1)
+        .collect::<Vec<(&String, u64, u64)>>();
     println!("{:?}", vec_of_tuppls);
-    for (character, number, arr_num) in &vec_of_tuppls {
-        if number == &1 {
-            continue;
-        }
+    let mut index:usize = 0;
+    for (character, number, arr_num) in vec_of_tuppls.iter() {
         if arr_num == &3 {
             return_string.push_str("=");
         }
@@ -50,13 +51,13 @@ fn mix(s1: &str, s2: &str) -> String {
         }
         return_string.push_str(":");
         return_string.push_str(&character.repeat(*number as usize).to_owned());
-        if vec_of_tuppls.last().unwrap().0 == *character {
-            println!("{}",character);
+        if &vec_of_tuppls.last().unwrap().0 == character {
             break;
         }
         else {
             return_string.push_str("/");
         }
+        index +=1;
     }
     return return_string;
   }
