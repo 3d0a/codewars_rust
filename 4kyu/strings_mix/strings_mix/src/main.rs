@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 fn main() {
-    let s1 = "Are they here";
-    let s2 = "yes, they are here";
+    let s1 = " In many languages";
+    let s2 = " there's a pair of functions";
     println!("{}", mix(s1, s2));
 }
 fn mix(s1: &str, s2: &str) -> String {
@@ -16,27 +16,43 @@ fn mix(s1: &str, s2: &str) -> String {
     let second_string_map      :HashMap<&String, u64>        = char_counter(&second_string_vec);
     let mut vec_of_tuppls      :Vec<(&String, u64, u64)>     = vec![];
     println!("{:?}, {:?}", first_string_map, second_string_map);
-    for element in first_string_map {
+    for element in first_string_map.iter() {
         match second_string_map.get(element.0) {
             Some(second_str_count) => {
                 if second_str_count > &element.1 {
                     vec_of_tuppls.push((element.0, *second_str_count, 2)); 
                 }
                 else if second_str_count < &element.1 {
-                    vec_of_tuppls.push((element.0, element.1, 1));
+                    vec_of_tuppls.push((element.0, *element.1, 1));
                 }
                 else {
-                    vec_of_tuppls.push((element.0, element.1, 3));
+                    vec_of_tuppls.push((element.0, *element.1, 3));
                 }
             }
             None => {
-                continue;
+                if *element.1 > 1 {
+                    vec_of_tuppls.push((element.0, *element.1, 1)) 
+                }
             }
         }
     }
-    vec_of_tuppls.sort_by(|a, b| a.0.cmp(&b.0));
-    vec_of_tuppls.sort_by(|a, b| a.2.cmp(&b.2));
+    for element in second_string_map {
+        match &first_string_map.get(element.0) {
+            Some(first_str_count) => {
+                continue;
+            }
+            
+            None => {
+                if element.1 > 1 {
+                    vec_of_tuppls.push((element.0, element.1, 2)) 
+                }
+            }
+        }
+    }
     vec_of_tuppls.sort_by(|a, b| b.1.cmp(&a.1));
+    vec_of_tuppls.sort_by(|a, b| a.0.cmp(&b.0));
+    vec_of_tuppls.sort_by(|a, b| b.1.cmp(&a.1));
+    vec_of_tuppls.sort_by(|a, b| a.2.cmp(&b.2));
     vec_of_tuppls  = vec_of_tuppls.into_iter()
         .filter(|x| x.1 != 1)
         .collect::<Vec<(&String, u64, u64)>>();
