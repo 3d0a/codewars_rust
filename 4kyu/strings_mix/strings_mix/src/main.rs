@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 fn main() {
-    let s1 = " In many languages";
-    let s2 = " there's a pair of functions";
+    let s1 = "looping is fun but dangerous";
+    let s2 = "less dangerous than coding";
     println!("{}", mix(s1, s2));
 }
 fn mix(s1: &str, s2: &str) -> String {
@@ -49,10 +49,10 @@ fn mix(s1: &str, s2: &str) -> String {
             }
         }
     }
-    vec_of_tuppls.sort_by(|a, b| b.1.cmp(&a.1));
     vec_of_tuppls.sort_by(|a, b| a.0.cmp(&b.0));
     vec_of_tuppls.sort_by(|a, b| b.1.cmp(&a.1));
     vec_of_tuppls.sort_by(|a, b| a.2.cmp(&b.2));
+    vec_of_tuppls.sort_by(|a, b| b.1.cmp(&a.1));
     vec_of_tuppls  = vec_of_tuppls.into_iter()
         .filter(|x| x.1 != 1)
         .collect::<Vec<(&String, u64, u64)>>();
