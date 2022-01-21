@@ -50,7 +50,7 @@ fn mix(s1: &str, s2: &str) -> String {
         }
         return_string.push_str(":");
         return_string.push_str(&character.repeat(*number as usize).to_owned());
-        if vec_of_tuppls.last().copied() == *character {
+        if vec_of_tuppls.last().unwrap().0 == *character {
             println!("{}",character);
             break;
         }
