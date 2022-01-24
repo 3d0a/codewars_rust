@@ -1,0 +1,1 @@
+/home/ikorkunov/rust_codewars/codewars_rust/7kyu/highest_and_lowest/high_and_low/target/debug/high_and_low: /home/ikorkunov/rust_codewars/codewars_rust/7kyu/highest_and_lowest/high_and_low/src/main.rs
