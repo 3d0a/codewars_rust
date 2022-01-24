@@ -1,0 +1,1 @@
+/home/ikorkunov/rust_codewars/codewars_rust/6kyu/break_camelCase/break_camelCase/target/debug/break_camelCase: /home/ikorkunov/rust_codewars/codewars_rust/6kyu/break_camelCase/break_camelCase/src/main.rs
