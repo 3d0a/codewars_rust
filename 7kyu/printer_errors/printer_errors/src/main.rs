@@ -1,5 +1,5 @@
 fn main() {
-    println!("{}", printer_errors("aaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbmmmmmmmmmmmmmmmmmmmxyz"));
+    println!("{}", printer_error("aaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbmmmmmmmmmmmmmmmmmmmxyz"));
 }
 
 fn printer_error(s: &str) -> String {
