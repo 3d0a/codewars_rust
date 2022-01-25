@@ -2,7 +2,7 @@ fn main() {
     println!("{}", printer_errors("aaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbmmmmmmmmmmmmmmmmmmmxyz"));
 }
 
-fn printer_errors(s: &str) -> String {
+fn printer_error(s: &str) -> String {
     let alphabet = (b'a'..=b'm')
         .map(|c| c as char)
         .filter(|c| c.is_alphabetic())
