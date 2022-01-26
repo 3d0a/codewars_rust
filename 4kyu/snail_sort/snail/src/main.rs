@@ -15,15 +15,21 @@ fn snail(matrix: &[Vec<i32>]) -> Vec<i32> {
     let mut down  :usize = matrix_size;
     let mut left  :usize = matrix_size;
     let mut up    :usize = matrix_size;
-
-    let right_coordinate = &go_right(matrix, &mut one_demention_vec, &(0,0), right);
-    up    -= 1;
-    let down_coordinate  = &go_down(matrix, &mut one_demention_vec, right_coordinate, down);
-    right -= 1;
-    let left_coordinate  = &go_left(matrix, &mut one_demention_vec, down_coordinate, left);
-    down  -= 1;
-    let up_coordinate    = &go_up(matrix, &mut one_demention_vec, left_coordinate, up);
-    left  -= 1;
+    let up_coordinate = &(0, 0);
+    loop {
+        let right_coordinate = &go_right(matrix, &mut one_demention_vec, up_coordinate, right);
+        up    -= 1;
+        if up == 0 {break}
+        let down_coordinate  = &go_down(matrix, &mut one_demention_vec, right_coordinate, down);
+        right -= 1;
+        if right == 0 {break}
+        let left_coordinate  = &go_left(matrix, &mut one_demention_vec, down_coordinate, left);
+        down  -= 1;
+        if down == 0 {break}
+        let up_coordinate    = &go_up(matrix, &mut one_demention_vec, left_coordinate, up);
+        left  -= 1;
+        if left == 0 {break}
+    }
     println!("{:?}", one_demention_vec);
     return one_demention_vec;
 }
