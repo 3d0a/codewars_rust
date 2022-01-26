@@ -1,10 +1,13 @@
 use std::collections::HashMap;
 fn main() {
     println!("Hello, world!");
-    count_duplicates("AAA1122fff");
+    println!("{}", count_duplicates("kue3Cx3RMEd0qNZacqCe6N"));
 }
 
 fn count_duplicates(text: &str) -> u32 {
+    if text == "" {
+        return 0;
+    }
     let mut dup_counter_map :HashMap<char, u32> = HashMap::new();
     for character in text.to_lowercase().chars() {
         match dup_counter_map.get_mut(&character) {
@@ -16,9 +19,7 @@ fn count_duplicates(text: &str) -> u32 {
             }
         }
     }
-    let mut max_elem :u32 = 0;
-    let max_elem          = dup_counter_map.iter().max_by(|a, b| a.1.cmp(&b.1)).map(|x|  {if x.1 > &max_elem {max_elem = *x.1;} x} ).unwrap();
-    let result_count      = dup_counter_map.iter().filter(|x| x.1 == max_elem.1).count();
-    
+    let result_count      = dup_counter_map.iter().filter(|x| x.1 > &1).count();
+    println!("{:?} {}",dup_counter_map, result_count );
     return result_count as u32;
 }
