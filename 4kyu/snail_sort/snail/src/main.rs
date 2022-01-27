@@ -1,11 +1,12 @@
 fn main() {
     println!("Hello, world!");
     let square = &[
-        vec![1, 2, 3, 4, 5],
-        vec![6, 7, 8, 9, 10],
-        vec![11, 12, 13, 14, 15],
-        vec![16, 17, 18, 19, 20],
-        vec![21, 22, 23, 24, 25],
+        vec![1, 2, 3, 4, 5, 7],
+        vec![6, 7, 8, 9, 10, 8],
+        vec![11, 12, 13, 14, 15,14],
+        vec![16, 17, 18, 19, 20, 33],
+        vec![21, 22, 23, 24, 25, 21],
+        vec![21, 22, 23, 24, 25, 10],
     ];
     snail(square);
 }
@@ -18,6 +19,9 @@ fn snail(matrix: &[Vec<i32>]) -> Vec<i32> {
         else {
             return vec![matrix[0][0]];
         }
+    }
+    if matrix.len() == 0 {
+        return vec![];
     }
     let matrix_size = matrix.len();
     let mut one_demention_vec  = vec![];
